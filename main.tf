@@ -138,6 +138,12 @@ resource "aws_launch_configuration" "launch_config" {
               sudo apt update -y
               sudo apt install -y apache2
 
+              # Fetch instance metadata using curl
+              INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+              AVAILABILITY_ZONE=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+              PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+
+              # Generate HTML content using the fetched metadata
               cat <<HTML > /var/www/html/index.html
               <html>
               <head>
@@ -167,9 +173,9 @@ resource "aws_launch_configuration" "launch_config" {
 
                 <div class="info">
                   <h2>Instance Details:</h2>
-                  <p><strong>Instance ID:</strong> \\\$(curl -s http://169.254.169.254/latest/meta-data/instance-id)</p>
-                  <p><strong>Availability Zone:</strong> \\\$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)</p>
-                  <p><strong>Public IP:</strong> \\\$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)</p>
+                  <p><strong>Instance ID:</strong> $INSTANCE_ID</p>
+                  <p><strong>Availability Zone:</strong> $AVAILABILITY_ZONE</p>
+                  <p><strong>Public IP:</strong> $PUBLIC_IP</p>
                 </div>
 
                 <div class="info">
