@@ -25,9 +25,8 @@ The scripts in this repository automate the deployment of a scalable and highly 
     cd AWS-Terraform-Infrastructure/
     ```
 
-2. Update the Terraform variables in the `.tf` files as needed.
 
-3. Initialize Terraform and apply the configuration:
+2. Initialize Terraform and apply the configuration:
     ```bash
     terraform init
     terraform apply
