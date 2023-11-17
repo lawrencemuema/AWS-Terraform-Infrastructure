@@ -21,7 +21,7 @@ The scripts in this repository automate the deployment of a scalable and highly 
 ## Usage
 1. Clone this repository:
     ```bash
-    git clone https://github.com/your-username/AWS-Terraform-Infrastructure.git
+    git clone https://github.com/lawrencemuema/AWS-Terraform-Infrastructure.git
     cd AWS-Terraform-Infrastructure/
     ```
 
